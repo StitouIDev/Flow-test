@@ -9,8 +9,10 @@ import UIKit
 
 class MainView: UIViewController {
     
+    private var users = [User]()
+    
     private let UserListButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         button.setTitle("UserList", for: .normal)
         button.layer.cornerRadius = 8.0
         button.layer.masksToBounds = true
@@ -18,24 +20,58 @@ class MainView: UIViewController {
         button.setTitleColor(.white, for: .normal)
         return button
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         view.backgroundColor = .systemGreen
         view.addSubview(UserListButton)
+        
+        
         UserListButton.addTarget(self, action: #selector(UserListButtonClicked), for: .touchUpInside)
     }
     
     @objc private func UserListButtonClicked() {
-        let rootVC = UserListPage()
-        let navVC = UINavigationController(rootViewController: rootVC)
-        navVC.modalPresentationStyle = .fullScreen
-        present(navVC, animated: true)
+        
+        DataManager.shared.deleteAllArticles()
+        
+        ApiManager.shared.getUsers { [weak self] result in
+            switch result {
+            case .success(let users):
+                DispatchQueue.main.async {
+                    let rootVC = UserListPage()
+         //           self?.users = users
+                    self?.apiToCoreData(users: users)
+                    let navVC = UINavigationController(rootViewController: rootVC)
+                    navVC.modalPresentationStyle = .fullScreen
+                    
+                    self?.present(navVC, animated: true)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
     }
     
-
-
+    private func saveUser(model: User) {
+        DataManager.shared.saveData(with: model) { result in
+            switch result {
+            case .success(()):
+                NotificationCenter.default.post(name: NSNotification.Name("saved"), object: nil)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func apiToCoreData(users: [User]) {
+        users.forEach { user in
+            saveUser(model: user)
+      //      print(user)
+        }
+    }
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -45,6 +81,6 @@ class MainView: UIViewController {
                                       width: 120,
                                       height: 40)
     }
-
+    
 }
 

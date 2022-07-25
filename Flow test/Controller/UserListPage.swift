@@ -9,7 +9,8 @@ import UIKit
 
 class UserListPage: UIViewController {
     
-    private var users = [User]()
+    public var users = [User]()
+    private var usersCore = [UserItem]()
     
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -26,22 +27,32 @@ class UserListPage: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        getUsers()
+        fetchData()
+        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
     }
-
-    func getUsers() {
-        ApiManager.shared.getUsers { [weak self] result in
+    
+    
+    private func fetchData() {
+        DataManager.shared.fetchingUsers { result in
             switch result {
-            case .success(let User):
-                self?.users = User
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
-                }
+            case .success(let users):
+                self.usersCore = users
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+
+    func saveUser(indexPath: IndexPath) {
+        DataManager.shared.saveData(with: users[indexPath.row]) { result in
+            switch result {
+            case .success(()):
+                NotificationCenter.default.post(name: NSNotification.Name("saved"), object: nil)
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -52,14 +63,15 @@ class UserListPage: UIViewController {
 
 extension UserListPage: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
+        return usersCore.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: UserDisplayCell.identifier, for: indexPath) as? UserDisplayCell  else {
             return UITableViewCell()
         }
-        let user = users[indexPath.row]
+        let user = usersCore[indexPath.row]
+      //  self.saveUser(indexPath: indexPath)
         cell.configure(with: user)
         return cell
     }
@@ -74,9 +86,10 @@ extension UserListPage: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let user = users[indexPath.row]
+        let user = usersCore[indexPath.row]
         let vc = UserEditPage()
         vc.configure(with: user)
+        vc.user = user
         navigationController?.pushViewController(vc, animated: true)
                 
         }

@@ -20,7 +20,7 @@ class ApiManager {
             
             do {
                 let results = try JSONDecoder().decode(UserResponse.self, from: data)
-                print(results)
+              //  print(results)
                 completion(.success(results.data))
             } catch {
                 print(error.localizedDescription)

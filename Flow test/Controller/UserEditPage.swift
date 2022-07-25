@@ -9,13 +9,18 @@ import UIKit
 
 class UserEditPage: UIViewController {
     
+    private var testTable: [UserItem] = [UserItem]()
+    public var user: UserItem?
+    public var model: User?
+    
     private let firstName: UITextField = {
             let field = UITextField()
             field.layer.masksToBounds = true
             field.layer.cornerRadius = 8.0
-            field.textAlignment = .center
             field.backgroundColor = .systemPink
             field.layer.borderWidth = 1.0
+            field.leftViewMode = .always
+            field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         return field
     }()
     
@@ -24,7 +29,8 @@ class UserEditPage: UIViewController {
         field.layer.masksToBounds = true
         field.layer.cornerRadius = 8.0
         field.backgroundColor = .systemPink
-        field.textAlignment = .center
+        field.leftViewMode = .always
+        field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         field.layer.borderWidth = 1.0
         return field
     }()
@@ -54,11 +60,45 @@ class UserEditPage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGray
-        
+        saveButton.addTarget(self, action: #selector(saveButtonClicked), for: .touchUpInside)
         addSubviews()
     }
     
-    public func configure(with model: User) {
+    @objc private func saveButtonClicked() {
+        
+        user?.first_name = firstName.text!
+        user?.last_name = lastName.text!
+       // saveUser(model: user as User)
+        print(user?.first_name)
+        print(user?.last_name)
+        deleteUser(model: user!)
+        
+    }
+
+    
+    private func deleteUser(model: UserItem) {
+        DataManager.shared.deleteUser(with: model) { result in
+            switch result {
+            case .success():
+                print("Deleted from Database")
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func saveUser(model: User) {
+        DataManager.shared.saveData(with: model) { result in
+            switch result {
+            case .success():
+                print("Saved")
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    public func configure(with model: UserItem) {
         firstName.text = model.first_name
         lastName.text = model.last_name
     }
@@ -98,6 +138,4 @@ class UserEditPage: UIViewController {
             width: view.frame.size.width - 50,
             height: 52)
     }
-    
-
 }

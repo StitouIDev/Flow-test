@@ -15,7 +15,7 @@ struct UserResponse: Codable {
 struct User: Codable {
     let id: Int
     let email: String
-    let first_name: String
-    let last_name: String
+    var first_name: String
+    var last_name: String
     let avatar: String
 }

@@ -71,4 +71,25 @@ class DataManager {
         }
     }
     
+    
+     func deleteAllArticles() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let context = appDelegate.persistentContainer.viewContext
+        
+        fetchingUsers { result in
+            switch result {
+            case .success(let users):
+                users.forEach { user in
+                    context.delete(user)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+                
+            }
+        }
+    }
+    
 }

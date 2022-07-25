@@ -70,14 +70,14 @@ class UserDisplayCell: UITableViewCell {
         NSLayoutConstraint.activate(emailConstraints)
     }
     
-    public func configure(with model: User) {
+    public func configure(with model: UserItem) {
     
-        guard let url = URL(string: model.avatar ) else {
+        guard let url = URL(string: model.avatar ?? "" ) else {
             return
         }
         image.sd_setImage(with: url, completed: nil)
-        name.text = "Name:  \(model.last_name) \(model.first_name)"
-        email.text = "Email:  \(model.email)"
+        name.text = "Name:  \(model.last_name!) \(model.first_name!)"
+        email.text = "Email:  \(model.email!)"
         
         
     }
