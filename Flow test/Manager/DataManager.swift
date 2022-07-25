@@ -57,6 +57,24 @@ class DataManager {
     }
     
     
+    func editUser(with model: UserItem, lastName: String, firstName: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        
+        let context = appDelegate.persistentContainer.viewContext
+        
+        model.first_name = firstName
+        model.last_name = lastName
+        
+        
+        do {
+            try context.save()
+            completion(.success(()))
+        } catch {
+            completion(.failure(DataError.failedToDelete))
+        }
+    }
+    
+    
     func deleteUser(with model: UserItem, completion: @escaping (Result<Void, Error>) -> Void) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         

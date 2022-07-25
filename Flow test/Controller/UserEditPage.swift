@@ -60,18 +60,32 @@ class UserEditPage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGray
-        saveButton.addTarget(self, action: #selector(saveButtonClicked), for: .touchUpInside)
         addSubviews()
+        saveButton.addTarget(self, action: #selector(saveButtonClicked), for: .touchUpInside)
+        cancelButton.addTarget(self, action: #selector(cancelButtonClicked), for: .touchUpInside)
     }
     
     @objc private func saveButtonClicked() {
+        guard let firstName = firstName.text, let lastName = lastName.text, let user = user else { return }
+        DataManager.shared.editUser(with: user, lastName: lastName, firstName: firstName) { result in
+            switch result {
+            case .success(()):
+                print("Edit")
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
         
-        user?.first_name = firstName.text!
-        user?.last_name = lastName.text!
-       // saveUser(model: user as User)
-        print(user?.first_name)
-        print(user?.last_name)
-        deleteUser(model: user!)
+        let rootVC = UserListPage()
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true)
+        
+    }
+    
+    @objc private func cancelButtonClicked() {
+        
+        self.navigationController?.popToRootViewController(animated: true)
         
     }
 
