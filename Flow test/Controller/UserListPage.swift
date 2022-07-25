@@ -20,8 +20,9 @@ class UserListPage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        title = "Users List"
+        view.backgroundColor = .black
+        title = "User List"
+        navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .always
         view.addSubview(tableView)
         tableView.delegate = self

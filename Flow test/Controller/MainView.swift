@@ -40,7 +40,6 @@ class MainView: UIViewController {
             case .success(let users):
                 DispatchQueue.main.async {
                     let rootVC = UserListPage()
-         //           self?.users = users
                     self?.apiToCoreData(users: users)
                     let navVC = UINavigationController(rootViewController: rootVC)
                     navVC.modalPresentationStyle = .fullScreen
@@ -58,7 +57,8 @@ class MainView: UIViewController {
         DataManager.shared.saveData(with: model) { result in
             switch result {
             case .success(()):
-                NotificationCenter.default.post(name: NSNotification.Name("saved"), object: nil)
+                break
+          //      NotificationCenter.default.post(name: NSNotification.Name("saved"), object: nil)
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -68,7 +68,6 @@ class MainView: UIViewController {
     private func apiToCoreData(users: [User]) {
         users.forEach { user in
             saveUser(model: user)
-      //      print(user)
         }
     }
     
@@ -76,10 +75,10 @@ class MainView: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        UserListButton.frame = CGRect(x: view.frame.size.width/2 - 60,
-                                      y: view.frame.size.height/2 - 20,
-                                      width: 120,
-                                      height: 40)
+        UserListButton.frame = CGRect(x: view.frame.size.width/2 - 80,
+                                      y: view.frame.size.height/2 - 30,
+                                      width: 160,
+                                      height: 60)
     }
     
 }

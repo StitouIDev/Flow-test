@@ -9,15 +9,28 @@ import UIKit
 
 class UserEditPage: UIViewController {
     
-    private var testTable: [UserItem] = [UserItem]()
     public var user: UserItem?
     public var model: User?
+    
+    private let firstNameLbl: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.text = "First Name"
+        return label
+    }()
+    
+    private let lastNameLbl: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.text = "Last Name"
+        return label
+    }()
     
     private let firstName: UITextField = {
             let field = UITextField()
             field.layer.masksToBounds = true
             field.layer.cornerRadius = 8.0
-            field.backgroundColor = .systemPink
+            field.backgroundColor = .systemGray
             field.layer.borderWidth = 1.0
             field.leftViewMode = .always
             field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
@@ -28,7 +41,7 @@ class UserEditPage: UIViewController {
         let field = UITextField()
         field.layer.masksToBounds = true
         field.layer.cornerRadius = 8.0
-        field.backgroundColor = .systemPink
+        field.backgroundColor = .systemGray
         field.leftViewMode = .always
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         field.layer.borderWidth = 1.0
@@ -40,7 +53,7 @@ class UserEditPage: UIViewController {
         button.setTitle("Save", for: .normal)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 8.0
-        button.backgroundColor = .gray
+        button.backgroundColor = .systemBlue
         button.setTitleColor(.white, for: .normal)
         
         return button
@@ -51,7 +64,7 @@ class UserEditPage: UIViewController {
         button.setTitle("Cancel", for: .normal)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 8.0
-        button.backgroundColor = .gray
+        button.backgroundColor = .systemBlue
         button.setTitleColor(.white, for: .normal)
         
         return button
@@ -59,7 +72,7 @@ class UserEditPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemGray
+        view.backgroundColor = .black
         addSubviews()
         saveButton.addTarget(self, action: #selector(saveButtonClicked), for: .touchUpInside)
         cancelButton.addTarget(self, action: #selector(cancelButtonClicked), for: .touchUpInside)
@@ -70,7 +83,7 @@ class UserEditPage: UIViewController {
         DataManager.shared.editUser(with: user, lastName: lastName, firstName: firstName) { result in
             switch result {
             case .success(()):
-                print("Edit")
+                break
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -118,7 +131,9 @@ class UserEditPage: UIViewController {
     }
     
     private func addSubviews() {
+        view.addSubview(firstNameLbl)
         view.addSubview(firstName)
+        view.addSubview(lastNameLbl)
         view.addSubview(lastName)
         view.addSubview(saveButton)
         view.addSubview(cancelButton)
@@ -128,28 +143,42 @@ class UserEditPage: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        firstName.frame = CGRect(
+        firstNameLbl.frame = CGRect(
             x: 25,
             y: 140,
-            width: view.frame.size.width - 50,
-            height: 52)
+            width: 100,
+            height: 50)
+        
+        firstName.frame = CGRect(
+            x: firstNameLbl.frame.origin.x + firstNameLbl.frame.size.width + 5,
+            y: 140,
+            width: view.frame.size.width - firstNameLbl.frame.size.width - 55,
+            height: 50)
+        
+        
+        lastNameLbl.frame = CGRect(
+            x: 25,
+            y: firstNameLbl.frame.origin.y + firstNameLbl.frame.size.height + 20,
+            width: 100,
+            height: 50)
+        
         
         lastName.frame = CGRect(
-            x: 25,
+            x: lastNameLbl.frame.origin.x + lastNameLbl.frame.size.width + 5,
             y: firstName.frame.origin.y + firstName.frame.size.height + 20,
-            width: view.frame.size.width - 50,
-            height: 52)
+            width: view.frame.size.width - lastNameLbl.frame.size.width - 55,
+            height: 50)
         
         saveButton.frame = CGRect(
             x: 25,
-            y: lastName.frame.origin.y + lastName.frame.size.height + 20,
+            y: lastNameLbl.frame.origin.y + lastNameLbl.frame.size.height + 30,
             width: view.frame.size.width - 50,
-            height: 52)
+            height: 50)
         
         cancelButton.frame = CGRect(
             x: 25,
             y: saveButton.frame.origin.y + saveButton.frame.size.height + 20,
             width: view.frame.size.width - 50,
-            height: 52)
+            height: 50)
     }
 }

@@ -76,8 +76,8 @@ class UserDisplayCell: UITableViewCell {
             return
         }
         image.sd_setImage(with: url, completed: nil)
-        name.text = "Name:  \(model.last_name!) \(model.first_name!)"
-        email.text = "Email:  \(model.email!)"
+        name.text = "Name:   \(model.first_name!) \(model.last_name!)"
+        email.text = "Email:   \(model.email!)"
         
         
     }
