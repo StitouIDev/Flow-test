@@ -17,6 +17,10 @@
 		BB37375C288D82960061BD92 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB37375B288D82960061BD92 /* UserResponse.swift */; };
 		BB37375E288D873F0061BD92 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB37375D288D873F0061BD92 /* DataManager.swift */; };
 		BB373761288DACBC0061BD92 /* UserListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB373760288DACBC0061BD92 /* UserListPage.swift */; };
+		BB40E086288DF8DE008DA029 /* UserDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB40E085288DF8DE008DA029 /* UserDisplayCell.swift */; };
+		BB40E089288E0222008DA029 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = BB40E088288E0222008DA029 /* SDWebImage */; };
+		BB836E3F288E133E00BD653F /* UserEditPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB836E3E288E133E00BD653F /* UserEditPage.swift */; };
+		BBD61951288E036F00677819 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BBD61950288E036F00677819 /* SDWebImageMapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,8 @@
 		BB37375B288D82960061BD92 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		BB37375D288D873F0061BD92 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		BB373760288DACBC0061BD92 /* UserListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListPage.swift; sourceTree = "<group>"; };
+		BB40E085288DF8DE008DA029 /* UserDisplayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDisplayCell.swift; sourceTree = "<group>"; };
+		BB836E3E288E133E00BD653F /* UserEditPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEditPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +45,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBD61951288E036F00677819 /* SDWebImageMapKit in Frameworks */,
+				BB40E089288E0222008DA029 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +74,7 @@
 			children = (
 				BB373757288D71CF0061BD92 /* Manager */,
 				BB37375A288D827A0061BD92 /* Model */,
+				BB40E084288DF897008DA029 /* View */,
 				BB37375F288DACA20061BD92 /* Controller */,
 				BB373740288D6A290061BD92 /* AppDelegate.swift */,
 				BB373742288D6A290061BD92 /* SceneDelegate.swift */,
@@ -99,8 +108,17 @@
 			children = (
 				BB373744288D6A290061BD92 /* MainView.swift */,
 				BB373760288DACBC0061BD92 /* UserListPage.swift */,
+				BB836E3E288E133E00BD653F /* UserEditPage.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		BB40E084288DF897008DA029 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BB40E085288DF8DE008DA029 /* UserDisplayCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,6 +137,10 @@
 			dependencies = (
 			);
 			name = "Flow test";
+			packageProductDependencies = (
+				BB40E088288E0222008DA029 /* SDWebImage */,
+				BBD61950288E036F00677819 /* SDWebImageMapKit */,
+			);
 			productName = "Flow test";
 			productReference = BB37373D288D6A290061BD92 /* Flow test.app */;
 			productType = "com.apple.product-type.application";
@@ -147,6 +169,10 @@
 				Base,
 			);
 			mainGroup = BB373734288D6A290061BD92;
+			packageReferences = (
+				BB40E087288E0222008DA029 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				BBD6194F288E036F00677819 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = BB37373E288D6A290061BD92 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -178,7 +204,9 @@
 				BB373759288D71EC0061BD92 /* ApiManager.swift in Sources */,
 				BB37375E288D873F0061BD92 /* DataManager.swift in Sources */,
 				BB373741288D6A290061BD92 /* AppDelegate.swift in Sources */,
+				BB40E086288DF8DE008DA029 /* UserDisplayCell.swift in Sources */,
 				BB373761288DACBC0061BD92 /* UserListPage.swift in Sources */,
+				BB836E3F288E133E00BD653F /* UserEditPage.swift in Sources */,
 				BB373743288D6A290061BD92 /* SceneDelegate.swift in Sources */,
 				BB37375C288D82960061BD92 /* UserResponse.swift in Sources */,
 			);
@@ -386,6 +414,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BB40E087288E0222008DA029 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		BBD6194F288E036F00677819 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BB40E088288E0222008DA029 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BB40E087288E0222008DA029 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		BBD61950288E036F00677819 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BB40E087288E0222008DA029 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		BB373749288D6A290061BD92 /* Flow_test.xcdatamodeld */ = {

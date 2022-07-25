@@ -28,9 +28,10 @@ class MainView: UIViewController {
     }
     
     @objc private func UserListButtonClicked() {
-        let vc = UserListPage()
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
+        let rootVC = UserListPage()
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true)
     }
     
 
