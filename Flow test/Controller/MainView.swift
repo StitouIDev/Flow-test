@@ -11,6 +11,8 @@ class MainView: UIViewController {
     
     private var users = [User]()
     
+    private var showPop: PopUp!
+    
     private let UserListButton: UIButton = {
         let button = UIButton()
         button.setTitle("User List", for: .normal)
@@ -39,6 +41,25 @@ class MainView: UIViewController {
         view.addSubview(popUpButton)
         
         UserListButton.addTarget(self, action: #selector(UserListButtonClicked), for: .touchUpInside)
+        
+        popUpButton.addTarget(self, action: #selector(popUpButtonClicked), for: .touchUpInside)
+    }
+    
+    @objc private func popUpButtonClicked() {
+        showPop = PopUp(frame: view.frame)
+        showPop.okButton.addTarget(self, action: #selector(okButtonClicked), for: .touchUpInside)
+        showPop.cancelButton.addTarget(self, action: #selector(cancelButtonClicked), for: .touchUpInside)
+        view.addSubview(showPop)
+    }
+    
+    @objc private func okButtonClicked() {
+        print("Button OK Clicked")
+        showPop.removeFromSuperview()
+    }
+    
+    @objc private func cancelButtonClicked() {
+        print("Button Cancel Clicked")
+        showPop.removeFromSuperview()
     }
     
     @objc private func UserListButtonClicked() {
