@@ -11,6 +11,8 @@ struct UserResponse: Codable {
     let data: [User]
 }
 
+// MARK: Model contains the data fetched from APi
+
 
 struct User: Codable {
     let id: Int

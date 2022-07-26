@@ -8,6 +8,8 @@
 import UIKit
 import SDWebImage
 
+// MARK: Display users List
+
 class UserDisplayCell: UITableViewCell {
 
     static let identifier = "UserDisplayCell"
@@ -44,6 +46,7 @@ class UserDisplayCell: UITableViewCell {
         
     }
     
+    // Constarints Apply 
     private func applyConstraints() {
         
         let imageConstraints = [

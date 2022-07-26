@@ -41,7 +41,7 @@ class UserListPage: UIViewController {
         tableView.frame = view.bounds
     }
     
-    
+    // fetch data
     private func fetchData() {
         CoreDataManager.DataManager.shared.fetchingUsers { result in
             switch result {
@@ -59,6 +59,9 @@ class UserListPage: UIViewController {
 
     
 }
+
+// MARK: Table View Conform Protocol
+
 
 extension UserListPage: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

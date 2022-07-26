@@ -12,6 +12,8 @@ import UIKit
 
 class CoreDataManager {
     
+    // MARK: Core Data Stack
+    
     class DataManager {
         static let shared = DataManager()
         
@@ -20,6 +22,9 @@ class CoreDataManager {
             case failedToFetchData
             case failedToDelete
         }
+        
+        // MARK: Core Data Functionnality
+
         
         func saveData(with model: User, completion: @escaping (Result<Void, Error>) -> Void) {
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
@@ -136,11 +141,13 @@ class CoreDataManager {
     }
     
     
-    
+    // MARK: Api Manager
+
     
     class ApiManager {
         static let shared = ApiManager()
         
+        // Retreive Data from API
         func getUsers(completion: @escaping (Result<[User], Error>) -> Void) {
 
             guard let url = URL(string: "https://reqres.in/api/users") else { return }

@@ -78,6 +78,7 @@ class UserEditPage: UIViewController {
         cancelButton.addTarget(self, action: #selector(cancelButtonClicked), for: .touchUpInside)
     }
     
+    // Save Change
     @objc private func saveButtonClicked() {
         guard let firstName = firstName.text, let lastName = lastName.text, let user = user, firstName != "" , lastName != "" else {
             let alert = UIAlertController(title: "Something Missing", message: "Fill all the blank", preferredStyle: .alert)
@@ -86,6 +87,7 @@ class UserEditPage: UIViewController {
             return
             
         }
+        
         CoreDataManager.DataManager.shared.editUser(with: user, lastName: lastName, firstName: firstName) { result in
             switch result {
             case .success(()):
@@ -102,33 +104,11 @@ class UserEditPage: UIViewController {
         
     }
     
+    // Cancel
     @objc private func cancelButtonClicked() {
         
         self.navigationController?.popToRootViewController(animated: true)
         
-    }
-
-    
-    private func deleteUser(model: UserItem) {
-        CoreDataManager.DataManager.shared.deleteUser(with: model) { result in
-            switch result {
-            case .success():
-                print("Deleted from Database")
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    private func saveUser(model: User) {
-        CoreDataManager.DataManager.shared.saveData(with: model) { result in
-            switch result {
-            case .success():
-                print("Saved")
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
     }
     
     public func configure(with model: UserItem) {
