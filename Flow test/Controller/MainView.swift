@@ -64,15 +64,15 @@ class MainView: UIViewController {
     
     @objc private func UserListButtonClicked() {
         
-       // DataManager.shared.deleteAllArticles()
+        //CoreDataManager.DataManager.shared.deleteAllArticles()
         
-        ApiManager.shared.getUsers { [weak self] result in
+        CoreDataManager.ApiManager.shared.getUsers { [weak self] result in
             switch result {
             case .success(let users):
                 DispatchQueue.main.async {
                     let rootVC = UserListPage()
-                    if DataManager.shared.isEmpty() {
-                    self?.apiToCoreData(users: users)
+                    if CoreDataManager.DataManager.shared.isEmpty() {
+                        self?.apiToCoreData(users: users)
                     }
                     let navVC = UINavigationController(rootViewController: rootVC)
                     navVC.modalPresentationStyle = .fullScreen
@@ -87,11 +87,10 @@ class MainView: UIViewController {
     }
     
     private func saveUser(model: User) {
-        DataManager.shared.saveData(with: model) { result in
+        CoreDataManager.DataManager.shared.saveData(with: model) { result in
             switch result {
             case .success(()):
                 break
-          //      NotificationCenter.default.post(name: NSNotification.Name("saved"), object: nil)
             case .failure(let error):
                 print(error.localizedDescription)
             }

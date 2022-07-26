@@ -13,9 +13,7 @@
 		BB37374B288D6A290061BD92 /* Flow_test.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BB373749288D6A290061BD92 /* Flow_test.xcdatamodeld */; };
 		BB37374D288D6A2A0061BD92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB37374C288D6A2A0061BD92 /* Assets.xcassets */; };
 		BB373750288D6A2A0061BD92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB37374E288D6A2A0061BD92 /* LaunchScreen.storyboard */; };
-		BB373759288D71EC0061BD92 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB373758288D71EC0061BD92 /* ApiManager.swift */; };
 		BB37375C288D82960061BD92 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB37375B288D82960061BD92 /* UserResponse.swift */; };
-		BB37375E288D873F0061BD92 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB37375D288D873F0061BD92 /* DataManager.swift */; };
 		BB373761288DACBC0061BD92 /* UserListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB373760288DACBC0061BD92 /* UserListPage.swift */; };
 		BB40E086288DF8DE008DA029 /* UserDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB40E085288DF8DE008DA029 /* UserDisplayCell.swift */; };
 		BB40E089288E0222008DA029 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = BB40E088288E0222008DA029 /* SDWebImage */; };
@@ -23,6 +21,7 @@
 		BBC5C3FB289071F000E1FF29 /* PopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC5C3FA289071F000E1FF29 /* PopUp.swift */; };
 		BBC5C3FD2890721C00E1FF29 /* PopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBC5C3FC2890721C00E1FF29 /* PopUp.xib */; };
 		BBD61951288E036F00677819 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BBD61950288E036F00677819 /* SDWebImageMapKit */; };
+		BBE2CDBF28909E77006B4788 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE2CDBE28909E77006B4788 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,14 +33,13 @@
 		BB37374C288D6A2A0061BD92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB37374F288D6A2A0061BD92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB373751288D6A2A0061BD92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BB373758288D71EC0061BD92 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		BB37375B288D82960061BD92 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
-		BB37375D288D873F0061BD92 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		BB373760288DACBC0061BD92 /* UserListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListPage.swift; sourceTree = "<group>"; };
 		BB40E085288DF8DE008DA029 /* UserDisplayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDisplayCell.swift; sourceTree = "<group>"; };
 		BB836E3E288E133E00BD653F /* UserEditPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEditPage.swift; sourceTree = "<group>"; };
 		BBC5C3FA289071F000E1FF29 /* PopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUp.swift; sourceTree = "<group>"; };
 		BBC5C3FC2890721C00E1FF29 /* PopUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUp.xib; sourceTree = "<group>"; };
+		BBE2CDBE28909E77006B4788 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,8 +91,7 @@
 		BB373757288D71CF0061BD92 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				BB373758288D71EC0061BD92 /* ApiManager.swift */,
-				BB37375D288D873F0061BD92 /* DataManager.swift */,
+				BBE2CDBE28909E77006B4788 /* CoreDataManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -209,9 +206,8 @@
 				BB373745288D6A290061BD92 /* MainView.swift in Sources */,
 				BB37374B288D6A290061BD92 /* Flow_test.xcdatamodeld in Sources */,
 				BBC5C3FB289071F000E1FF29 /* PopUp.swift in Sources */,
-				BB373759288D71EC0061BD92 /* ApiManager.swift in Sources */,
-				BB37375E288D873F0061BD92 /* DataManager.swift in Sources */,
 				BB373741288D6A290061BD92 /* AppDelegate.swift in Sources */,
+				BBE2CDBF28909E77006B4788 /* CoreDataManager.swift in Sources */,
 				BB40E086288DF8DE008DA029 /* UserDisplayCell.swift in Sources */,
 				BB373761288DACBC0061BD92 /* UserListPage.swift in Sources */,
 				BB836E3F288E133E00BD653F /* UserEditPage.swift in Sources */,

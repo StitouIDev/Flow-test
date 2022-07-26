@@ -86,7 +86,7 @@ class UserEditPage: UIViewController {
             return
             
         }
-        DataManager.shared.editUser(with: user, lastName: lastName, firstName: firstName) { result in
+        CoreDataManager.DataManager.shared.editUser(with: user, lastName: lastName, firstName: firstName) { result in
             switch result {
             case .success(()):
                 break
@@ -110,7 +110,7 @@ class UserEditPage: UIViewController {
 
     
     private func deleteUser(model: UserItem) {
-        DataManager.shared.deleteUser(with: model) { result in
+        CoreDataManager.DataManager.shared.deleteUser(with: model) { result in
             switch result {
             case .success():
                 print("Deleted from Database")
@@ -121,7 +121,7 @@ class UserEditPage: UIViewController {
     }
     
     private func saveUser(model: User) {
-        DataManager.shared.saveData(with: model) { result in
+        CoreDataManager.DataManager.shared.saveData(with: model) { result in
             switch result {
             case .success():
                 print("Saved")

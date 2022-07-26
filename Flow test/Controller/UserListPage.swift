@@ -43,7 +43,7 @@ class UserListPage: UIViewController {
     
     
     private func fetchData() {
-        DataManager.shared.fetchingUsers { result in
+        CoreDataManager.DataManager.shared.fetchingUsers { result in
             switch result {
             case .success(let users):
                 self.usersCore = users
