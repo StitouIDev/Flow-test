@@ -12,12 +12,12 @@ class ApiManager {
     static let shared = ApiManager()
     
     func getUsers(completion: @escaping (Result<[User], Error>) -> Void) {
-        
+
         guard let url = URL(string: "https://reqres.in/api/users") else { return }
-        
+
         let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, _, error in
             guard let data = data, error == nil else { return }
-            
+
             do {
                 let results = try JSONDecoder().decode(UserResponse.self, from: data)
               //  print(results)
@@ -27,10 +27,9 @@ class ApiManager {
                 completion(.failure(error))
             }
         }
-        
+
         task.resume()
-                
+
     }
-    
-    
+
 }

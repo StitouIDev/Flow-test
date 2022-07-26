@@ -110,4 +110,24 @@ class DataManager {
         }
     }
     
+    func isEmpty() -> Bool {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return true }
+        
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request: NSFetchRequest<UserItem>
+        
+        request = UserItem.fetchRequest()
+        
+        do {
+            let users = try context.fetch(request)
+            if users.count == 0 {
+                return true
+            } else {
+                return false
+            }
+        } catch {
+            return true
+        }
+    }
 }

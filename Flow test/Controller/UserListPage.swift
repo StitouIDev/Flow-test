@@ -49,16 +49,6 @@ class UserListPage: UIViewController {
         }
     }
 
-    func saveUser(indexPath: IndexPath) {
-        DataManager.shared.saveData(with: users[indexPath.row]) { result in
-            switch result {
-            case .success(()):
-                NotificationCenter.default.post(name: NSNotification.Name("saved"), object: nil)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
     
 }
 
@@ -72,7 +62,6 @@ extension UserListPage: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         let user = usersCore[indexPath.row]
-      //  self.saveUser(indexPath: indexPath)
         cell.configure(with: user)
         return cell
     }

@@ -79,7 +79,13 @@ class UserEditPage: UIViewController {
     }
     
     @objc private func saveButtonClicked() {
-        guard let firstName = firstName.text, let lastName = lastName.text, let user = user else { return }
+        guard let firstName = firstName.text, let lastName = lastName.text, let user = user, firstName != "" , lastName != "" else {
+            let alert = UIAlertController(title: "Something Missing", message: "Fill all the blank", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    present(alert, animated: true, completion: nil)
+            return
+            
+        }
         DataManager.shared.editUser(with: user, lastName: lastName, firstName: firstName) { result in
             switch result {
             case .success(()):

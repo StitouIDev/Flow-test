@@ -27,20 +27,21 @@ class MainView: UIViewController {
         view.backgroundColor = .systemGreen
         view.addSubview(UserListButton)
         
-        
         UserListButton.addTarget(self, action: #selector(UserListButtonClicked), for: .touchUpInside)
     }
     
     @objc private func UserListButtonClicked() {
         
-        DataManager.shared.deleteAllArticles()
+       // DataManager.shared.deleteAllArticles()
         
         ApiManager.shared.getUsers { [weak self] result in
             switch result {
             case .success(let users):
                 DispatchQueue.main.async {
                     let rootVC = UserListPage()
+                    if DataManager.shared.isEmpty() {
                     self?.apiToCoreData(users: users)
+                    }
                     let navVC = UINavigationController(rootViewController: rootVC)
                     navVC.modalPresentationStyle = .fullScreen
                     
