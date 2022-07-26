@@ -21,11 +21,22 @@ class MainView: UIViewController {
         return button
     }()
     
+    private let popUpButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("PopUp", for: .normal)
+        button.layer.cornerRadius = 8.0
+        button.layer.masksToBounds = true
+        button.backgroundColor = .black
+        button.setTitleColor(.white, for: .normal)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         view.backgroundColor = .systemGreen
         view.addSubview(UserListButton)
+        view.addSubview(popUpButton)
         
         UserListButton.addTarget(self, action: #selector(UserListButtonClicked), for: .touchUpInside)
     }
@@ -78,6 +89,11 @@ class MainView: UIViewController {
         
         UserListButton.frame = CGRect(x: view.frame.size.width/2 - 80,
                                       y: view.frame.size.height/2 - 30,
+                                      width: 160,
+                                      height: 60)
+        
+        popUpButton.frame = CGRect(x: view.frame.size.width/2 - 80,
+                                      y: UserListButton.frame.origin.y + UserListButton.frame.size.height + 20,
                                       width: 160,
                                       height: 60)
     }

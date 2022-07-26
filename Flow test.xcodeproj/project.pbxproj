@@ -20,6 +20,8 @@
 		BB40E086288DF8DE008DA029 /* UserDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB40E085288DF8DE008DA029 /* UserDisplayCell.swift */; };
 		BB40E089288E0222008DA029 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = BB40E088288E0222008DA029 /* SDWebImage */; };
 		BB836E3F288E133E00BD653F /* UserEditPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB836E3E288E133E00BD653F /* UserEditPage.swift */; };
+		BBC5C3FB289071F000E1FF29 /* PopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC5C3FA289071F000E1FF29 /* PopUp.swift */; };
+		BBC5C3FD2890721C00E1FF29 /* PopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBC5C3FC2890721C00E1FF29 /* PopUp.xib */; };
 		BBD61951288E036F00677819 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BBD61950288E036F00677819 /* SDWebImageMapKit */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +40,8 @@
 		BB373760288DACBC0061BD92 /* UserListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListPage.swift; sourceTree = "<group>"; };
 		BB40E085288DF8DE008DA029 /* UserDisplayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDisplayCell.swift; sourceTree = "<group>"; };
 		BB836E3E288E133E00BD653F /* UserEditPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEditPage.swift; sourceTree = "<group>"; };
+		BBC5C3FA289071F000E1FF29 /* PopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUp.swift; sourceTree = "<group>"; };
+		BBC5C3FC2890721C00E1FF29 /* PopUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUp.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				BB40E085288DF8DE008DA029 /* UserDisplayCell.swift */,
+				BBC5C3FA289071F000E1FF29 /* PopUp.swift */,
+				BBC5C3FC2890721C00E1FF29 /* PopUp.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -187,6 +193,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBC5C3FD2890721C00E1FF29 /* PopUp.xib in Resources */,
 				BB373750288D6A2A0061BD92 /* LaunchScreen.storyboard in Resources */,
 				BB37374D288D6A2A0061BD92 /* Assets.xcassets in Resources */,
 			);
@@ -201,6 +208,7 @@
 			files = (
 				BB373745288D6A290061BD92 /* MainView.swift in Sources */,
 				BB37374B288D6A290061BD92 /* Flow_test.xcdatamodeld in Sources */,
+				BBC5C3FB289071F000E1FF29 /* PopUp.swift in Sources */,
 				BB373759288D71EC0061BD92 /* ApiManager.swift in Sources */,
 				BB37375E288D873F0061BD92 /* DataManager.swift in Sources */,
 				BB373741288D6A290061BD92 /* AppDelegate.swift in Sources */,
