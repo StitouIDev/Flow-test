@@ -13,7 +13,7 @@ class MainView: UIViewController {
     
     private let UserListButton: UIButton = {
         let button = UIButton()
-        button.setTitle("UserList", for: .normal)
+        button.setTitle("User List", for: .normal)
         button.layer.cornerRadius = 8.0
         button.layer.masksToBounds = true
         button.backgroundColor = .black

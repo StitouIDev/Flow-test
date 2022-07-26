@@ -27,6 +27,10 @@ class UserListPage: UIViewController {
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Dismiss",
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(dismissSelf))
         
         fetchData()
         
@@ -47,6 +51,10 @@ class UserListPage: UIViewController {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    @objc private func dismissSelf() {
+        dismiss(animated: true, completion: nil)
     }
 
     
